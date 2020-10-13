@@ -1,7 +1,8 @@
-import 'package:category_tutorial/models/category_content.dart';
+import 'package:category_tutorial/models/category.dart';
+import 'package:category_tutorial/models/unit.dart';
 import 'package:flutter/material.dart';
 
-import 'category.dart';
+import 'category_cell.dart';
 
 class CategoryRoute extends StatelessWidget {
   static const _categoryNames = <String>[
@@ -37,25 +38,40 @@ class CategoryRoute extends StatelessWidget {
     Icons.animation,
   ];
 
-  Widget _buildCategoryWidgets(List<CategoryContent> contents) {
+  Widget _buildCategoryWidgets(List<Category> contents) {
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
         var content = contents[index];
-        return Category(
-          content: content,
+        return CategoryCell(
+          category: content,
         );
       },
       itemCount: contents.length,
     );
   }
 
+  List<Unit> _retrieveUnitList(String categoryName) {
+    return List.generate(10, (index) {
+      index += 1;
+      return Unit(
+        name: "$categoryName Unit $index",
+        conversion: index.toDouble(),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final contents = <CategoryContent>[];
+    final contents = <Category>[];
 
     for (var i = 0; i < _categoryNames.length; i++) {
       contents.add(
-        CategoryContent(_categoryNames[i], _baseColors[i], _icons[i]),
+        Category(
+          text: _categoryNames[i],
+          color: _baseColors[i],
+          iconData: _icons[i],
+          units: _retrieveUnitList(_categoryNames[i]),
+        ),
       );
     }
 
