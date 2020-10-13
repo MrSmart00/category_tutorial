@@ -15,23 +15,25 @@ class CategoryCell extends StatelessWidget {
     if (Navigator.of(context).canPop()) {
       Navigator.of(context).pop();
     }
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            elevation: 1.0,
-            title: Text(
-              category.text,
-              style: Theme.of(context).textTheme.bodyText1,
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return Scaffold(
+            appBar: AppBar(
+              elevation: 1.0,
+              title: Text(
+                category.text,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              centerTitle: true,
             ),
-            centerTitle: true,
-          ),
-          body: ConverterRoute(
-            units: category.units,
-          ),
-        );
-      }
-    ));
+            body: ConverterRoute(
+              units: category.units,
+            ),
+          );
+        },
+      ),
+    );
   }
 
   @override
