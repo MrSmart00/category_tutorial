@@ -1,15 +1,10 @@
+import 'package:category_tutorial/ui/category_route.dart';
 import 'package:flutter/material.dart';
-import 'ui/category.dart';
 
 void main() {
   runApp(
     MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Category Tutorial"),
-        ),
-        body: Category(),
-      ),
+      home: CategoryRoute(),
     ),
   );
 }

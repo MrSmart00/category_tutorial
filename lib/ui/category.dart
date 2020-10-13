@@ -1,6 +1,15 @@
+import 'package:category_tutorial/models/category_content.dart';
 import 'package:flutter/material.dart';
 
 class Category extends StatelessWidget {
+  final CategoryContent content;
+
+  const Category({
+    Key key,
+    @required this.content,
+  })  : assert(content != null),
+        super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var _height = 100.0;
@@ -13,25 +22,28 @@ class Category extends StatelessWidget {
           height: _height,
           child: InkWell(
             borderRadius: BorderRadius.all(Radius.circular(_height / 2)),
-            highlightColor: Colors.deepOrange,
-            splashColor: Colors.cyanAccent,
+            highlightColor: content.color,
+            splashColor: content.color,
             onTap: () {
               print("I was tapped!");
             },
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Icon(
-                    Icons.cake,
-                    size: 60.0,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child: Icon(
+                      content.iconData,
+                      size: 60.0,
+                    ),
                   ),
-                ),
-                Text(
-                  "Cake!",
-                  style: TextStyle(fontSize: 24),
-                )
-              ],
+                  Text(
+                    content.text,
+                    style: TextStyle(fontSize: 24),
+                  )
+                ],
+              ),
             ),
           ),
         ),
