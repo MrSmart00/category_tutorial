@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'category_cell.dart';
 
-class CategoryRoute extends StatelessWidget {
+class CategoryRoute extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _CategoryRouteState();
+}
+
+class _CategoryRouteState extends State<CategoryRoute> {
   static const _categoryNames = <String>[
     'Length',
     'Area',
