@@ -20,6 +20,7 @@ class CategoryCell extends StatelessWidget {
         builder: (BuildContext context) {
           return Scaffold(
             appBar: AppBar(
+              backgroundColor: category.color,
               elevation: 1.0,
               title: Text(
                 category.text,
